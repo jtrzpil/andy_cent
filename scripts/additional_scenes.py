@@ -1,17 +1,17 @@
 import pandas as pd
 
-lista_wybrane_sceny = pd.read_csv('E:\wybrane_sceny1.csv')
+#lista_wybrane_sceny = pd.read_csv('..\datasets\user_data\\additional_scenes\\additional_scenes_list.csv')
 
 import csv
 tablica_linkow=[]
 
-with open('E:\wybrane_sceny.csv', newline='') as csvfile:
+with open('..\\datasets\\user_data\\additional_scenes\\additional_scenes_list.csv', newline='') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         tablica_linkow.append(row['Browse Link'])
 
 
-master_ETM = pd.read_csv('E:\master_ETM.csv')
+master_ETM = pd.read_csv('..\\datasets\\filtered_data\\master_ETM.csv')
 dataframe_ETM = pd.DataFrame(columns = master_ETM.columns)
 
 for link in tablica_linkow:
@@ -20,10 +20,10 @@ for link in tablica_linkow:
         dataframe_ETM=dataframe_ETM.append(df_temp)
         print(len(dataframe_ETM))
 
-dataframe_ETM.to_csv(r'E:\wybrane_sceny_ETM.csv')   
+dataframe_ETM.to_csv(r'..\\datasets\\user_data\\additional_scenes\\additional_scenes_merge\\additional_scenes_ETM.csv')   
 
 
-master_TM = pd.read_csv('E:\master_TM.csv')
+master_TM = pd.read_csv('..\datasets\\filtered_data\master_TM.csv')
 dataframe_TM = pd.DataFrame(columns = master_TM.columns)
 
 for link in tablica_linkow:
@@ -32,10 +32,10 @@ for link in tablica_linkow:
         dataframe_TM=dataframe_TM.append(df_temp)
         print(len(dataframe_TM))
 
-dataframe_TM.to_csv(r'E:\wybrane_sceny_TM.csv')
+dataframe_TM.to_csv(r'..\\datasets\\user_data\\additional_scenes\\additional_scenes_merge\\additional_scenes_TM.csv')
 
 
-master_OT = pd.read_csv('E:\master_OT.csv')
+master_OT = pd.read_csv('..\\datasets\\filtered_data\\master_OT.csv')
 dataframe_OT = pd.DataFrame(columns = master_OT.columns)
 
 for link in tablica_linkow:
@@ -44,11 +44,11 @@ for link in tablica_linkow:
         dataframe_OT=dataframe_OT.append(df_temp)
         print(len(dataframe_OT))
 
-dataframe_OT.to_csv(r'E:\wybrane_sceny_OT.csv')
+dataframe_OT.to_csv(r'..\\datasets\\user_data\\additional_scenes\\additional_scenes_merge\\additional_scenes_OT.csv')
 
 
 import os, glob
-path = ('E:\wybrane_sceny')
+path = ('..\\datasets\\user_data\\additional_scenes\\additional_scenes_merge')
 all_files = glob.glob(os.path.join(path,"*.csv"))
 
 all_df = []
@@ -58,5 +58,5 @@ for f in all_files:
     all_df.append(df)
     
 merged_df = pd.concat(all_df, ignore_index = True, sort = True)
-merged_df.to_csv(r'E:\wybrane_sceny\wybr_sceny_OT_ETM_TM.csv')
+merged_df.to_csv(r'..\\datasets\\user_data\\additional_scenes\\additional_secenes_OT_ETM_TM.csv')
 

@@ -1,6 +1,6 @@
 import pandas as pd
 
-df_table_PR = pd.read_csv(r'E:\sceny_path_row.csv')
+df_table_PR = pd.read_csv(r'..\datasets\scenes_path_row.csv')
 path_row_dict = {}
 
 def extract_path_row (file_path, res_filename):
@@ -20,7 +20,7 @@ def extract_path_row (file_path, res_filename):
         master_dataframe.to_csv(res_filename)    
 
 
-   
-extract_path_row('E:\metadata\LANDSAT_OT_C2_L2.csv', 'E:\master_OT.csv')
-extract_path_row('E:\metadata\LANDSAT_TM_C2_L2.csv', 'E:\master_TM.csv')
-extract_path_row('E:\metadata\LANDSAT_ETM_C2_L2.csv','E:\master_ETM.csv')
+
+extract_path_row('..\datasets\master_data\LANDSAT_OT_C2_L2.csv', '..\datasets\\filtered_data\master_OT.csv')
+extract_path_row('..\datasets\master_data\LANDSAT_TM_C2_L2.csv', '..\datasets\\filtered_data\master_TM.csv')
+extract_path_row('..\datasets\master_data\LANDSAT_ETM_C2_L2.csv','..\datasets\\filtered_data\master_ETM.csv')
